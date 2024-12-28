@@ -1,6 +1,6 @@
 # python alaram clock
 import time
-# import pygame
+import pygame
 import datetime
 
 def set_alaram(str_alarm_time):
@@ -12,10 +12,19 @@ def set_alaram(str_alarm_time):
         currenct_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(currenct_time)
         
+        if currenct_time == str_alarm_time:
+            print("WAKE UP............!")
+            pygame.mixer.init()
+            pygame.mixer.music.load(str_sound_path)
+            pygame.mixer.music.play()
+            # to play music continously
+            while pygame.mixer.music.getbusy():
+                time.sleep(1)
+            
+            bln_running = False
+            
         time.sleep(1)
-
-
-
+        
 
 
 
